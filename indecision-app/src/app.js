@@ -2,7 +2,8 @@ console.log('hello again');
 
 var app = {
     title: 'Brave New World',
-    subtitle: 'life is lousy'
+    subtitle: 'life is lousy',
+    options: ['do one thing', 'do another']
 }
 
 
@@ -10,7 +11,8 @@ var app = {
 var template = (
 <div>
     <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
     <ol>
         <li>list one</li>
         <li>list two</li>
@@ -24,11 +26,17 @@ var user = {
     location: 'Indy'
 }
 
+function getLocation(location) {
+    if(location){
+        return <p>Location: {location}</p>;
+    } 
+}
+
 var templateTwo = (
     <div>
-      <h1>{user.name.toUpperCase()}</h1>
-      <p>Age: {user.age}</p>
-      <p>Location: {user.location}</p>  
+      <h1>name: {user.name ? user.name[0].toUpperCase() + user.name.substring(1) : 'Anonymous'}</h1>
+      {user.age >= 18 && <p>Age: {user.age}</p>}
+      {getLocation(user.location)}
     </div>
 );
 

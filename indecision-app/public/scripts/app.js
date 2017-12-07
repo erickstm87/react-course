@@ -4,7 +4,8 @@ console.log('hello again');
 
 var app = {
     title: 'Brave New World',
-    subtitle: 'life is lousy'
+    subtitle: 'life is lousy',
+    options: ['do one thing', 'do another']
 
     //JSX - Javascript XML
 };var template = React.createElement(
@@ -15,10 +16,15 @@ var app = {
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'p',
         null,
         app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
         'ol',
@@ -42,26 +48,33 @@ var user = {
     location: 'Indy'
 };
 
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
+
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name.toUpperCase()
+        'name: ',
+        user.name ? user.name[0].toUpperCase() + user.name.substring(1) : 'Anonymous'
     ),
-    React.createElement(
+    user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
