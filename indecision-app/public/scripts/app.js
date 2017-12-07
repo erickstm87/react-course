@@ -2,38 +2,68 @@
 
 console.log('hello again');
 
-//JSX - Javascript XML
-// var template = (
-// <div>
-//     <h1>more jsx stuff right?</h1>
-//     <p>This is some info</p>
-//     <ol>
-//         <li>list one</li>
-//         <li>list two</li>
-//     </ol>
-// </div>
-// );
+var app = {
+    title: 'Brave New World',
+    subtitle: 'life is lousy'
+
+    //JSX - Javascript XML
+};var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'list one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'list two'
+        )
+    )
+);
+
+var user = {
+    name: 'Thursday',
+    age: 50,
+    location: 'Indy'
+};
 
 var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
+    'div',
     null,
-    'Tomas Erickson'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Age: 30'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Location: Boulder'
-  )
+    React.createElement(
+        'h1',
+        null,
+        user.name.toUpperCase()
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Age: ',
+        user.age
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Location: ',
+        user.location
+    )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

@@ -1,25 +1,37 @@
 console.log('hello again');
 
+var app = {
+    title: 'Brave New World',
+    subtitle: 'life is lousy'
+}
+
+
 //JSX - Javascript XML
-// var template = (
-// <div>
-//     <h1>more jsx stuff right?</h1>
-//     <p>This is some info</p>
-//     <ol>
-//         <li>list one</li>
-//         <li>list two</li>
-//     </ol>
-// </div>
-// );
+var template = (
+<div>
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
+    <ol>
+        <li>list one</li>
+        <li>list two</li>
+    </ol>
+</div>
+);
+
+var user = {
+    name: 'Thursday',
+    age: 50,
+    location: 'Indy'
+}
 
 var templateTwo = (
     <div>
-      <h1>Tomas Erickson</h1>
-      <p>Age: 30</p>
-      <p>Location: Boulder</p>  
+      <h1>{user.name.toUpperCase()}</h1>
+      <p>Age: {user.age}</p>
+      <p>Location: {user.location}</p>  
     </div>
 );
 
 var appRoot = document.getElementById('app')
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
