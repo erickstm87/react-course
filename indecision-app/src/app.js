@@ -1,6 +1,6 @@
 console.log('hello again');
 
-var app = {
+const app = {
     title: 'Brave New World',
     subtitle: 'life is lousy',
     options: ['do one thing', 'do another']
@@ -8,7 +8,7 @@ var app = {
 
 
 //JSX - Javascript XML
-var template = (
+const template = (
 <div>
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitle}</p>}
@@ -20,7 +20,7 @@ var template = (
 </div>
 );
 
-var user = {
+const user = {
     name: 'Thursday',
     age: 50,
     location: 'Indy'
@@ -32,7 +32,7 @@ function getLocation(location) {
     } 
 }
 
-var templateTwo = (
+const templateTwo = (
     <div>
       <h1>name: {user.name ? user.name[0].toUpperCase() + user.name.substring(1) : 'Anonymous'}</h1>
       {user.age >= 18 && <p>Age: {user.age}</p>}
@@ -40,6 +40,6 @@ var templateTwo = (
     </div>
 );
 
-var appRoot = document.getElementById('app')
+const appRoot = document.getElementById('app')
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
