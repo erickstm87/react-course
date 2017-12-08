@@ -42,22 +42,7 @@ var app = {
     )
 );
 
-var user = {
-    name: 'Thursday',
-    age: 50,
-    location: 'Indy'
-};
-
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
-    }
-}
+var count = 0;
 
 var templateTwo = React.createElement(
     'div',
@@ -65,16 +50,14 @@ var templateTwo = React.createElement(
     React.createElement(
         'h1',
         null,
-        'name: ',
-        user.name ? user.name[0].toUpperCase() + user.name.substring(1) : 'Anonymous'
+        'This is my count: ',
+        count
     ),
-    user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
+    React.createElement(
+        'button',
+        { id: someId, className: 'button' },
+        '+1'
+    )
 );
 
 var appRoot = document.getElementById('app');

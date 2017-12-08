@@ -20,25 +20,14 @@ const template = (
 </div>
 );
 
-const user = {
-    name: 'Thursday',
-    age: 50,
-    location: 'Indy'
-}
-
-function getLocation(location) {
-    if(location){
-        return <p>Location: {location}</p>;
-    } 
-}
+let count = 0;
 
 const templateTwo = (
     <div>
-      <h1>name: {user.name ? user.name[0].toUpperCase() + user.name.substring(1) : 'Anonymous'}</h1>
-      {user.age >= 18 && <p>Age: {user.age}</p>}
-      {getLocation(user.location)}
+      <h1>This is my count: {count}</h1>
+      <button id={someId} className='button'>+1</button>
     </div>
-);
+)
 
 const appRoot = document.getElementById('app')
 
