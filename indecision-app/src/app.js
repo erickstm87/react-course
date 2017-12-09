@@ -1,52 +1,51 @@
 console.log('hello again');
 
 const app = {
-    title: 'Brave New World',
-    subtitle: 'life is lousy',
-    options: ['do one thing', 'do another']
+    title: 'Indecision App',
+    subtitle: 'What Should I do Hal?',
+    options: []
+}
+const appRoot = document.getElementById('app');
+
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+
+    if(option){ //if string is empty that's falsey so this if statement won't run
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        console.log(app.options);
+    }
+    renderTemplateApp();
+};
+
+const emptyArray = () => {
+    app.options = [];
+    renderTemplateApp();
 }
 
+const renderTemplateApp = () => 
+{
+    //JSX - Javascript XML
+    const template = (
+    <div>
+        <h1>{app.title}</h1>
+        {app.subtitle && <p>{app.subtitle}</p>}
+        <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+        <p>{app.options.length}</p>
+        <button onClick={emptyArray}>Remove All Entries</button>
+        <ol>
+            <li>list one</li>
+            <li>list two</li>
+        </ol>
+        <form onSubmit={onFormSubmit}>
+            <input type='text' name='option'/>
+            <button>Add Option</button>
+        </form>
+    </div>
+    );
 
-//JSX - Javascript XML
-const template = (
-<div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-    <ol>
-        <li>list one</li>
-        <li>list two</li>
-    </ol>
-</div>
-);
-
-let count = 0;
-const addOne = () => {
-    count += 1;
-    renderCounterApp();
-}
-const minusOne = () => {
-    count -= 1;
-    renderCounterApp();
-}
-const resetCount = () => {
-    count = 0;
-    renderCounterApp();
-}
-const appRoot = document.getElementById('app')
-
-const renderCounterApp = () => {
-
-    const templateTwo = (
-        <div>
-        <h1>This is my count: {count}</h1>
-        <button onClick={addOne}> +1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={resetCount}>reset</button>
-        </div>
-    )
-
-    ReactDOM.render(templateTwo, appRoot);
+    ReactDOM.render(template, appRoot);
 }
 
-renderCounterApp();
+renderTemplateApp();
