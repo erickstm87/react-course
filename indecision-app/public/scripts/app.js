@@ -60,16 +60,13 @@ var renderTemplateApp = function renderTemplateApp() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'list one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'list two'
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option + 1 },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',

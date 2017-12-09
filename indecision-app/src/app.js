@@ -35,8 +35,9 @@ const renderTemplateApp = () =>
         <p>{app.options.length}</p>
         <button onClick={emptyArray}>Remove All Entries</button>
         <ol>
-            <li>list one</li>
-            <li>list two</li>
+        {
+                app.options.map((option) => <li key={option + 1}>{option}</li> )
+        }
         </ol>
         <form onSubmit={onFormSubmit}>
             <input type='text' name='option'/>
