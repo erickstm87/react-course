@@ -23,10 +23,10 @@ var renderTemplate = function renderTemplate() {
             { onClick: flipSwitch },
             declared ? 'Hide Details' : 'Show Details'
         ),
-        React.createElement(
+        declared && React.createElement(
             'p',
             null,
-            declared ? 'here are the deets' : ''
+            'Here are the deets'
         )
     );
 
