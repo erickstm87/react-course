@@ -9,6 +9,12 @@ var app = {
 };
 var appRoot = document.getElementById('app');
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    console.log(randomNum);
+    var option = app.options[randomNum];
+    console.log(option);
+};
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault();
     var option = e.target.elements.option.value;
@@ -43,19 +49,29 @@ var renderTemplateApp = function renderTemplateApp() {
             app.subtitle
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length > 0 ? 'Here are your options' : 'No options'
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What should I do?'
         ),
         React.createElement(
             'button',
             { onClick: emptyArray },
             'Remove All Entries'
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are your options' : 'No options'
         ),
         React.createElement(
             'ol',
@@ -67,16 +83,6 @@ var renderTemplateApp = function renderTemplateApp() {
                     option
                 );
             })
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'Add Option'
-            )
         )
     );
 

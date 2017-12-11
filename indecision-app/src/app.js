@@ -7,6 +7,12 @@ const app = {
 }
 const appRoot = document.getElementById('app');
 
+const onMakeDecision = () => {
+    const randomNum = Math.floor((Math.random() * app.options.length));
+    console.log(randomNum);
+    const option = app.options[randomNum];
+    console.log(option);
+}
 const onFormSubmit = (e) => {
     e.preventDefault();
     const option = e.target.elements.option.value;
@@ -31,18 +37,19 @@ const renderTemplateApp = () =>
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-        <p>{app.options.length}</p>
+        <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
         <button onClick={emptyArray}>Remove All Entries</button>
+        <form onSubmit={onFormSubmit}>
+            <input type='text' name='option'/>
+            <button>Add Option</button>
+        </form>
+        <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
         <ol>
         {
                 app.options.map((option) => <li key={option + 1}>{option}</li> )
         }
         </ol>
-        <form onSubmit={onFormSubmit}>
-            <input type='text' name='option'/>
-            <button>Add Option</button>
-        </form>
+        
     </div>
     );
 
