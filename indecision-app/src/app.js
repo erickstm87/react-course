@@ -6,7 +6,7 @@ class IndecisionApp extends React.Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             //options: ['thing one', 'thing two', 'thing five']
-            options: []
+            options: props.options
         }
     }
     handleDeleteOptions(){
@@ -37,11 +37,10 @@ class IndecisionApp extends React.Component {
         })
     }
     render(){
-        const title = 'The Indecision';
         const subtitle = 'Ask the machine';
         return(
             <div>
-                <Header title={title} subtitle={subtitle}/>
+                <Header subtitle={subtitle}/>
                 <Action 
                     hasOptions={this.state.options.length > 0} 
                     handleOptions={this.handleOptions}
@@ -58,50 +57,60 @@ class IndecisionApp extends React.Component {
     }
 }
 
-class Header extends React.Component{
-    render(){
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-            </div>
-        )
-    }
+IndecisionApp.defaultProps = {
+    options: []
+};
+
+// class Header extends React.Component{
+//     render(){
+//         return (
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <h2>{this.props.subtitle}</h2>
+//             </div>
+//         )
+//     }
+// }
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            {props.subtitle && <h2>{props.subtitle}</h2>}
+        </div>
+    )
+};
+
+Header.defaultProps = {
+    title: 'The Indecision'
 }
 
-class Action extends React.Component {
-    render(){
-        return (
-            <div>
-            <button onClick={this.props.handleOptions} disabled={!this.props.hasOptions}>
-                What should i do?
-            </button>
-            </div>
-        )
-    }
+const Action = (props) => {
+    return (
+        <div>
+        <button onClick={props.handleOptions} disabled={!props.hasOptions}>
+            What should i do?
+        </button>
+        </div>
+    )
 }
 
-class Options extends React.Component {
-    render(){
-        return(
-            <div>
-                <button onClick={this.props.handleDeleteOptions} disabled={this.props.options.length < 1}>Remove Options</button>         
-                {
-                   this.props.options.map((element) => <Option key={element} optionText={element}/>)
-                }                     
-            </div>
-        )
-    }
+const Options = (props) => {
+    return(
+        <div>
+            <button onClick={props.handleDeleteOptions} disabled={props.options.length < 1}>Remove Options</button>         
+            {
+               props.options.map((element) => <Option key={element} optionText={element}/>)
+            }                     
+        </div>
+    )
 }
 
-class Option extends React.Component {
-    render(){
-        return(
-            <div>
-                Option: {this.props.optionText}
-            </div>
-        )
-    }
+const Option = (props) => {
+    return(
+        <div>
+            Option: {props.optionText}
+        </div>
+    )
 }
 
 class AddOptions extends React.Component {
@@ -133,4 +142,14 @@ class AddOptions extends React.Component {
     }
 }
 
+// const User = (props) => { //these stateless functional components are faster than class based state components
+//     return(
+//         <div>
+//             <p>Name: {props.name}</p>
+//             <p>Age: {props.age}</p> 
+//         </div>
+//     )
+// }
+
 ReactDOM.render(<IndecisionApp />, document.getElementById('app')); 
+//ReactDOM.render(<User name='tomas' age={30}/>, document.getElementById('app')); 
