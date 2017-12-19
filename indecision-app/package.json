@@ -5,9 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "babel-preset-env": "1.5.2",
-    "babel-preset-react": "6.24.1"
+    "babel-preset-react": "6.24.1",
+    "concurrently": "^3.5.1"
   },
   "scripts": {
-    "my-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "my-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch | live-server public/"
   }
 }
