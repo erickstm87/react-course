@@ -7,13 +7,27 @@ class IndecisionApp extends React.Component {
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state = {
             //options: ['thing one', 'thing two', 'thing five']
-            options: props.options
+            options: []
         }
     }
     componentDidMount(){
-        console.log('componentDidMount');
+        try{
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+            if(options){
+                this.setState(() => ({options}));            
+            }
+        }
+        catch(e){
+            //do nothing at all
+        }
+        
     }
     componentDidUpdate(prevProps, prevState){
+        if(prevState.options.length !== this.state.options.length){
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
         console.log('componentDidUpdate');
     }
     componentWillUnmount(){
@@ -65,10 +79,6 @@ class IndecisionApp extends React.Component {
     }
 }
 
-IndecisionApp.defaultProps = {
-    options: []
-};
-
 // class Header extends React.Component{
 //     render(){
 //         return (
@@ -105,7 +115,8 @@ const Action = (props) => {
 const Options = (props) => {
     return(
         <div>
-            <button onClick={props.handleDeleteOptions} disabled={props.options.length < 1}>Remove Options</button>         
+            <button onClick={props.handleDeleteOptions} disabled={props.options.length < 1}>Remove Options</button>     
+            {props.options.length === 0 && <p>Please add an option to get started</p>}    
             {
                props.options.map((element) => 
                 <Option 
@@ -147,6 +158,10 @@ class AddOptions extends React.Component {
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
         this.setState(() => ({ error }));
+
+        if(!error){
+            e.target.elements.option.value = '';
+        }
     }
     render(){
         return(
