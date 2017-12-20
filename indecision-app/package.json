@@ -12,7 +12,7 @@
     "webpack": "3.1.0"
   },
   "scripts": {
-    "build": "webpack",
-    "serve": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch | live-server public/"
+    
+    "serve": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch | live-server public/ | webpack --watch"
   }
 }

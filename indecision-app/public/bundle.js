@@ -65,9 +65,53 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person_js__ = __webpack_require__(2);
+//import './utils.js';
+
+
 
 console.log('app js is running');
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* squared */](3));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](23, 6));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](80));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](1));
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return squared; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+console.log('utils is running');
+
+const squared = (x) => x * x;
+const add = (x, y) => x + y;
+
+//2 types of exports
+//1. default export
+//2. named exports
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
+console.log('i am a person!');
+
+const isAdult = (x) => x > 17;
+const canDrink = (x) =>  x > 20;
+
+
 
 /***/ })
 /******/ ]);
