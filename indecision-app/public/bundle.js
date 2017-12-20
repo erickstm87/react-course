@@ -76,40 +76,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 console.log('app js is running');
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* squared */](3));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* squared */](3));
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](23, 6));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](80));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["c" /* isAdult */](80));
 console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](1));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](21, 2));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */](62));
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return squared; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return squared; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
 console.log('utils is running');
 
 const squared = (x) => x * x;
 const add = (x, y) => x + y;
-
+/* harmony default export */ __webpack_exports__["b"] = ((x,y) => x - y);
 //2 types of exports
 //1. default export
 //2. named exports
 
-
+ //the default value of subtract can be renamned when it's imported
 
 /***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isAdult; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
 console.log('i am a person!');
 
 const isAdult = (x) => x > 17;
 const canDrink = (x) =>  x > 20;
+/* harmony default export */ __webpack_exports__["b"] = ((x) => x > 63);
 
 
 
