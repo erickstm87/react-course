@@ -10,6 +10,10 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var template = _react2.default.createElement('p', {}, 'testing 123');
+var template = _react2.default.createElement(
+  'p',
+  null,
+  'This is jsx from webpack'
+);
 
 _reactDom2.default.render(template, document.getElementById('app'));
