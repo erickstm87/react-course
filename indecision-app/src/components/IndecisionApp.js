@@ -5,17 +5,35 @@ import Header from './Header';
 import Options from './Options';
 
 class IndecisionApp extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handleOptions = this.handleOptions.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = {
-            //options: ['thing one', 'thing two', 'thing five']
-            options: []
-        }
+    state = {
+        options: []
     }
+   
+    handleDeleteOptions = () => {
+        console.log('called');
+        this.setState(() => ({options: []}));
+    }
+    handleDeleteOption = (option) => {
+        this.setState((prevState) => ({
+            options: prevState.options.filter((word) => word !== option)
+        }));
+    }
+    handleOptions = () => {
+        console.log('called');
+        const randomNum = Math.floor((Math.random() * this.state.options.length));
+        const option = this.state.options[randomNum];
+        alert(option);
+    }
+    handleAddOption = (option) => {
+        if(!option){
+            return 'enter a valid option';
+        }
+        else if(this.state.options.indexOf(option) > -1){
+            return 'entry already exists';
+        }
+        this.setState((prevState) => ({options: prevState.options.concat(option)}))
+    }
+    
     componentDidMount(){
         try{
             const json = localStorage.getItem('options');
@@ -39,30 +57,7 @@ class IndecisionApp extends React.Component {
     componentWillUnmount(){
         console.log('componentWillUnmount')
     }
-    handleDeleteOptions(){
-        console.log('called');
-        this.setState(() => ({options: []}));
-    }
-    handleDeleteOption(option){
-        this.setState((prevState) => ({
-            options: prevState.options.filter((word) => word !== option)
-        }));
-    }
-    handleOptions(){
-        console.log('called');
-        const randomNum = Math.floor((Math.random() * this.state.options.length));
-        const option = this.state.options[randomNum];
-        alert(option);
-    }
-    handleAddOption(option){
-        if(!option){
-            return 'enter a valid option';
-        }
-        else if(this.state.options.indexOf(option) > -1){
-            return 'entry already exists';
-        }
-        this.setState((prevState) => ({options: prevState.options.concat(option)}))
-    }
+
     render(){
         const subtitle = 'Ask the machine';
         return(
