@@ -3,8 +3,31 @@
     border: none;
     border-bottom: .6rem solid darken($purple, 10%);
     font-weight: bold;
-    color: white;
+    color: #ffffff;
     font-size: $l-size;
     width: 100%;
+    padding: 2.4rem;
     margin-bottom: $xl-size;
+}
+
+.big-button:disabled {
+    opacity: .5;
+}
+
+
+//smaller buttons
+.button {
+    background: $purple;
+    border: none;
+    border-bottom: .3rem solid darken($purple, 10%);
+    color: #ffffff;
+    font-weight: 500;
+    padding: $s-size;
+}
+
+.button--link{
+    background: none;
+    border: none;
+    color: $off-white;
+    padding: 0;
 }
