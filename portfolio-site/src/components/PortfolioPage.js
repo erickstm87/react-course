@@ -6,8 +6,8 @@ const PortfolioPage = () => {
         <div>
             Here is a list of projects I've been working on. A lot of them revolve around the MERN stack. Let me know what you think:
             <br />
-            <NavLink to='/ProjOne' activeClassName='active-class'>Proj1 </NavLink>
-            <NavLink to='/ProjTwo' activeClassName='active-class'>Proj2 </NavLink>
+            <Link to='/ProjOne'>Proj1 </Link>
+            <Link to='/ProjTwo'>Proj2 </Link>
         </div>
     )
 };

@@ -16,8 +16,8 @@ const AppRouter = () => (
                 <Route exact path='/' component={WelcomePage}/>
                 <Route path='/portfolio' component={PortfolioPage}/>
                 <Route path='/contact' component={ContactForm}/>
-                <Route path='/ProjOne' component={ProjOne}/>
-                <Route path='/ProjTwo' component={ProjTwo}/>
+                <Route path='/ProjOne/:id?' component={ProjOne}/>
+                <Route path='/ProjTwo/:id?' component={ProjTwo}/>
                 <Route component={NotFound}/>
             </Switch>  
         </div> 
