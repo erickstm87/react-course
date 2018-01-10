@@ -84,6 +84,8 @@ const setEndDate = (endDate) => ({
     endDate
 });
 
+
+
 const filterReducer = (state = filterReducerDefaultState, action) => {
     switch(action.type){
         case 'SET_TEXT':
@@ -120,7 +122,7 @@ const getVisibleExpenses = (expense, { text, sortBy, startDate, endDate}) => {
     return expense.filter((expense) => {
         const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
         const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
-        const textMatch = true;
+        const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;
     });
@@ -135,7 +137,7 @@ const store = createStore(
 
 store.subscribe(() => {
     const state = store.getState();
-    const visibleExpenses = getVisibleExpenses(state.expense, state.filter);
+    const visibleExpenses = getVisibleExpenses(state.expense, state.filters);
     console.log(visibleExpenses);    
 });
 
@@ -144,7 +146,7 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 // store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 // store.dispatch(editExpense(expenseTwo.expense.id, {amount: 500}));
 
-// store.dispatch(setTextFilter('anotherText'));
+store.dispatch(setTextFilter('t'));
 // store.dispatch(setTextFilter());
 
 // store.dispatch(sortByAmount());
@@ -152,6 +154,9 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 // store.dispatch(setStartDate(125));
 // store.dispatch(setEndDate(32));
 // store.dispatch(setStartDate());
+
+// store.dispatch(setStartDate(0));
+// store.dispatch(setEndDate(9999));
 
 const demoState = {
     expenses: [{
