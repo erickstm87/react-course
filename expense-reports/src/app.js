@@ -4,6 +4,7 @@ import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
 import { setText, setTextFilter } from './actions/filters';
+import { Provider } from 'react-redux';
 import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -20,5 +21,15 @@ console.log(visibleExpenses);
 
 console.log(store.getState());
 
-ReactDOM.render(<AppRouter />, document.getElementById('app')); 
+setTimeout(() => {
+    store.dispatch(setTextFilter('rent'));
+},3000);
+
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+);
+
+ReactDOM.render(jsx, document.getElementById('app')); 
 //ReactDOM.render(<User name='tomas' age={30}/>, document.getElementById('app')); 
